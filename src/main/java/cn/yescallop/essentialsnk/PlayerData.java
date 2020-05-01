@@ -8,8 +8,8 @@ public class PlayerData {
     
     public final String player;
     
-    public PlayerData(String p) {
-        this.player = p.toLowerCase();
+    public PlayerData(String player) {
+        this.player = player.toLowerCase();
     }
     
     public ConfigSection encode() {
