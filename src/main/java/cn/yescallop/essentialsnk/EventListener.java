@@ -3,8 +3,11 @@ package cn.yescallop.essentialsnk;
 import cn.nukkit.Player;
 import cn.nukkit.block.Block;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.entity.Entity;
 import cn.nukkit.event.EventHandler;
 import cn.nukkit.event.Listener;
+import cn.nukkit.event.EntityDamageByEntityEvent;
+import cn.nukkit.event.EntityDamageEventl;
 import cn.nukkit.event.player.*;
 import cn.nukkit.level.Location;
 
@@ -47,6 +50,23 @@ public class EventListener implements Listener {
         api.removeTPRequest(event.getPlayer());
     }
 
+    @EventHandler
+    public void onHit(EntityDamageEvent e) {
+        Entity entity = e.getEntity();
+        
+        if (e instanceof EntityDamageByEntityEvent) {
+            Entity damager = ((EntityDamageByEntityEvent) e).getDamager();
+            
+            if (damager instanceof Player && entity instanceof Player) {
+                PlayerData data = api.getPlayerData((Player) damager);
+                
+                if (data.godMode && !((Player) damager).hasPermission("essentialsnk.god.pvp")) {
+                    e.setCancelled();
+                }
+            }
+        }
+    }
+    
     @EventHandler
     public void onPlayerChat(PlayerChatEvent event) {
         Player player = event.getPlayer();
