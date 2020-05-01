@@ -465,7 +465,7 @@ public class EssentialsAPI {
         return this.configs.exists(this.warpConfig, name);
     }
 
-     public PlayerData getPlayerData(Player p) {
+    public PlayerData getPlayerData(Player p) {
         return getPlayerData(p.getName());
     }
 
