@@ -48,6 +48,12 @@ permissions:
     default: true
   essentialsnk.getpos.others:
     default: op
+  essentialsnk.god:
+    default: op
+  essentialsnk.god.others:
+    default: op
+  essentialsnk.god.pvp:
+    default: op
   essentialsnk.heal:
     default: op
   essentialsnk.heal.others:
