@@ -36,7 +36,7 @@ public class GodCommand extends CommandBase {
             }
 
             if (player == null || !player.isOnline()) {
-                sender.sendMessage(TextFormat.RED + lang.translateString("commands.generic.player.notfound"));
+                sender.sendMessage(TextFormat.RED + Language.translate("commands.generic.player.notfound"));
                 return false;
             }
 
@@ -44,7 +44,7 @@ public class GodCommand extends CommandBase {
         } else if (args.length == 1) {
             if (args[0].length() < 4) {
                 if (!(sender instanceof Player)) {
-                    sender.sendMessage(TextFormat.RED + lang.translateString("commands.generic.ingame"));
+                    sender.sendMessage(TextFormat.RED + Language.translate("commands.generic.ingame"));
                     return false;
                 }
 
@@ -59,12 +59,12 @@ public class GodCommand extends CommandBase {
                 }
 
                 if (player == null || !player.isOnline()) {
-                    sender.sendMessage(TextFormat.RED + lang.translateString("commands.generic.player.notfound"));
+                    sender.sendMessage(TextFormat.RED + Language.translate("commands.generic.player.notfound"));
                     return false;
                 }
             }
         } else if (!(sender instanceof Player)) {
-            sender.sendMessage(TextFormat.RED + lang.translateString("commands.generic.ingame"));
+            sender.sendMessage(TextFormat.RED + Language.translate("commands.generic.ingame"));
             return false;
         }
 
