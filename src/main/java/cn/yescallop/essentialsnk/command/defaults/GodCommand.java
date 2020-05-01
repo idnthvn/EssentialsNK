@@ -69,7 +69,7 @@ public class GodCommand extends CommandBase {
             return false;
         }
 
-        PlayerData data = api.getPlayerData(player);
+        PlayerData data = getPlayerData(player);
         data.godMode = value == null ? !data.godMode : value;
 
         sender.sendMessage(Language.translate(data.godMode ? "commands.god.enable" : "commands.god.disable"));
