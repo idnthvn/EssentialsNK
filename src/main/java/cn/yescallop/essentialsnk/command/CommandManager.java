@@ -30,6 +30,7 @@ public class CommandManager {
         map.register("EssentialsNK", new FlyCommand(api));
         map.register("EssentialsNK", new GamemodeCommand(api));
         map.register("EssentialsNK", new GetPosCommand(api));
+        map.register("EssentialsNK", new GodCommand(api));
         map.register("EssentialsNK", new HealCommand(api));
         map.register("EssentialsNK", new ItemDBCommand(api));
         map.register("EssentialsNK", new JumpCommand(api));
