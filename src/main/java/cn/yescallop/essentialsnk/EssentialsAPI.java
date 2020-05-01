@@ -463,6 +463,40 @@ public class EssentialsAPI {
         return this.configs.exists(this.warpConfig, name);
     }
 
+     public PlayerData getPlayerData(Player p) {
+        return getPlayerData(p.getName());
+    }
+
+    public PlayerData getPlayerData(String p) {
+        return players.get(p.toLowerCase());
+    }
+
+    public PlayerData createPlayerData(Player p) {
+        PlayerData data = new PlayerData(p.getName());
+        players.put(p.getName().toLowerCase(), data);
+
+        return data;
+    }
+
+    private boolean initPlayers() {
+        Config cfg = new Config(new File(plugin.getDataFolder(), "players.yml"), Config.YAML);
+
+        for (Map.Entry<String, Object> entry : cfg.getAll().entrySet()) {
+            String name = entry.getKey().toLowerCase();
+
+            try {
+                PlayerData data = new PlayerData(name);
+                data.decode((ConfigSection) entry.getValue());
+                players.put(name, data);
+            } catch (Exception e) {
+                plugin.getLogger().warning("Corrupted data of player '" + name + "'");
+            }
+        }
+
+        return true;
+    }
+    
+    
     public Position getStandablePositionAt(Position pos) {
         int x = pos.getFloorX();
         int y = pos.getFloorY() + 1;
