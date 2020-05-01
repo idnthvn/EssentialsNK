@@ -1,7 +1,10 @@
 package cn.yescallop.essentialsnk.command.defaults;
 
 import cn.nukkit.Player;
+import cn.nukkit.Server;
 import cn.nukkit.command.CommandSender;
+import cn.nukkit.command.data.CommandParamType;
+import cn.nukkit.command.data.CommandParameter;
 import cn.nukkit.utils.TextFormat;
 import cn.yescallop.essentialsnk.EssentialsAPI;
 import cn.yescallop.essentialsnk.Language;
@@ -12,6 +15,13 @@ public class GodCommand extends CommandBase {
 
     public GodCommand(EssentialsAPI api) {
         super("god", api);
+    
+
+	// command parameters
+	commandParameters.clear();
+		this.commandParameters.put("default", new CommandParameter[] {
+		new CommandParameter("player", CommandParamType.TARGET, true)
+		});
     }
 
     @Override
@@ -42,7 +52,8 @@ public class GodCommand extends CommandBase {
             }
 
             value = args[1].toLowerCase().equals("on");
-        } else if (args.length == 1) {
+        } 
+		else if (args.length == 1) {
             if (args[0].length() < 4) {
                 if (!(sender instanceof Player)) {
                     sender.sendMessage(TextFormat.RED + Language.translate("commands.generic.ingame"));
@@ -51,8 +62,9 @@ public class GodCommand extends CommandBase {
 
                 player = (Player) sender;
                 value = args[0].toLowerCase().equals("on");
-            } else {
-                player = api.getServer().getPlayer(args[0]);
+            } 
+			else {
+				player = api.getServer().getPlayer(args[0]);
 
                 if (sender != player && !sender.hasPermission("essentialsnk.god.others")) {
                     sender.sendMessage(getPermissionMessage());
@@ -64,7 +76,8 @@ public class GodCommand extends CommandBase {
                     return false;
                 }
             }
-        } else if (!(sender instanceof Player)) {
+        } 
+		else if (!(sender instanceof Player)) {
             sender.sendMessage(TextFormat.RED + Language.translate("commands.generic.ingame"));
             return false;
         }
