@@ -465,17 +465,17 @@ public class EssentialsAPI {
         return this.configs.exists(this.warpConfig, name);
     }
 
-    public PlayerData getPlayerData(Player p) {
-        return getPlayerData(p.getName());
+    public PlayerData getPlayerData(Player player) {
+        return getPlayerData(player.getName());
     }
 
-    public PlayerData getPlayerData(String p) {
-        return players.get(p.toLowerCase());
+    public PlayerData getPlayerData(String player) {
+        return players.get(player.toLowerCase());
     }
 
-    public PlayerData createPlayerData(Player p) {
-        PlayerData data = new PlayerData(p.getName());
-        players.put(p.getName().toLowerCase(), data);
+    public PlayerData createPlayerData(Player player) {
+        PlayerData data = new PlayerData(player.getName());
+        players.put(player.getName().toLowerCase(), data);
 
         return data;
     }
