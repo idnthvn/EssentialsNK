@@ -62,6 +62,8 @@ public class EssentialsAPI {
     private final ConfigType ignoreConfig;
     private final Configs configs;
 
+    private Map<String, PlayerData> players = new HashMap<>();
+    
     public EssentialsAPI(EssentialsNK plugin) {
         instance = this;
         this.plugin = plugin;
