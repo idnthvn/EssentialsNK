@@ -29,7 +29,7 @@ public class GodCommand extends CommandBase {
         Boolean value = null;
 
         if (args.length == 2) {
-            player = getAPI().getServer().getPlayer(args[0]);
+            player = api.getServer().getPlayer(args[0]);
 
             if (sender != player && !sender.hasPermission("essentialsnk.god.others")) {
                 sender.sendMessage(getPermissionMessage());
@@ -52,7 +52,7 @@ public class GodCommand extends CommandBase {
                 player = (Player) sender;
                 value = args[0].toLowerCase().equals("on");
             } else {
-                player = getAPI().getServer().getPlayer(args[0]);
+                player = api.getServer().getPlayer(args[0]);
 
                 if (sender != player && !sender.hasPermission("essentialsnk.god.others")) {
                     sender.sendMessage(getPermissionMessage());
@@ -69,7 +69,7 @@ public class GodCommand extends CommandBase {
             return false;
         }
 
-        PlayerData data = getAPI().getPlayerData(player);
+        PlayerData data = api.getPlayerData(player);
         data.godMode = value == null ? !data.godMode : value;
 
         sender.sendMessage(Language.translate(data.godMode ? "commands.god.enable" : "commands.god.disable"));
