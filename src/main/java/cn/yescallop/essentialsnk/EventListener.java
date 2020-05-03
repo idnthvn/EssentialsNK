@@ -51,6 +51,11 @@ public class EventListener implements Listener {
     }
 
     @EventHandler
+    public void onJoin(PlayerJoinEvent e) {
+        api.createPlayerData(e.getPlayer());
+    }
+    
+    @EventHandler
     public void onHit(EntityDamageEvent e) {
         Entity entity = e.getEntity();
         
